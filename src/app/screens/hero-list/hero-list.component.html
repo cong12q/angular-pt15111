@@ -1,0 +1,36 @@
+<p>danh sách siêu nhân</p>
+   <p>{{heroItem|json}}</p>
+<fieldset>
+    <legend>Thông tin anh hùng</legend>
+    <div>
+        <label for="">Tên Hero</label>
+        <input type="text" placeholder="Tên anh hùng" (keyup)="heroItem.name =$event.target.value"
+        [value]="heroItem.name">
+    </div>
+    <div>
+        <label for="">Ảnh</label>
+        <input type="text" placeholder="Ảnh anh hùng" (keyup)="heroItem.image =$event.target.value" 
+        [value]="heroItem.image">
+    </div>
+    <div>
+        <label for="">Giới tính</label>
+        <input type="radio" name="gender" [checked]="heroItem.gender == 'male'" value="male" (change)="heroItem.gender = 'male'">Nam
+        <input type="radio" name="gender" [checked]="heroItem.gender == 'female'" value="female" (change)="heroItem.gender = 'female'">Nữ
+    </div>
+    <div>
+        <button (click)="saveHero()">Lưu</button>
+    </div>
+</fieldset>
+<select (change)="sortByGender($event)">
+    <option value="1">Hiển thị hết</option>
+    <option value="2">Nam</option>
+    <option value="3">Nu</option>
+
+</select>
+<div>
+    <ng-container *ngFor="let hero of heros">
+        <li *ngIf="hero.display == true">{{hero.id}} - {{hero.name}} - {{hero.gender}}
+            <a href="javascript:;" (click)="editHero(hero)"> Sửa </a>
+        </li>
+    </ng-container>
+</div>

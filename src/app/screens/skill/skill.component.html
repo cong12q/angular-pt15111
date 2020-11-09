@@ -1,0 +1,49 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<fieldset>
+    <div>
+        <label for="">Tên skill</label>
+        <input type="text" placeholder="Tên skill" (keyup)="skillItem.name = $event.target.value"
+            [value]="skillItem.name">
+    </div>
+    <div>
+        <label for="">Image</label>
+        <input type="text" placeholder="Image skill" (keyup)="skillItem.image = $event.target.value"
+            [value]="skillItem.image">
+    </div>
+    <div>
+        <label for="">Mana skill</label>
+        <input type="text" placeholder="Mana skill" (keyup)="skillItem.mana = $event.target.value"
+            [value]="skillItem.mana">
+    </div>
+    <div>
+        <label for="">Thời gian hồi skill</label>
+        <input type="text" placeholder="Thời gian hồi skill skill" (keyup)="skillItem.countdown = $event.target.value"
+            [value]="skillItem.countdown">
+    </div>
+    <div>
+        <button (click)=saveSkill()>Lưu</button>
+    </div>
+</fieldset>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tên Skill</th>
+            <th scope="col">Mana Skill</th>
+            <th scope="col">Thời gian hồi chieu</th>
+            <th scope="col">Acction</th>
+        </tr>
+    </thead>
+    <ng-container *ngFor="let sk of skill">
+        <tbody>
+            <tr>
+                <td> {{sk.name}} </td>
+                <td> {{sk.mana}} </td>
+                <td> {{sk.countdown}} </td>
+                <td> <a href="javascript:;" (click)="editSkill(sk)">Sửa</a></td>
+            </tr>
+        </tbody>
+    </ng-container>
+</table>
